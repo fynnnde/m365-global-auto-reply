@@ -839,8 +839,8 @@ $de = @{
     'Image size' = 'BildgrÃ¶ÃŸe'
     'Float left' = 'Links umflieÃŸen'
     'Float right' = 'Rechts umflieÃŸen'
-    'Direct link to the image, for example https://i.imgur.com/example.png' = 'Direkter Link zum Bild, zum Beispiel https://i.imgur.com/beispiel.png'
-    'Upload the image to a site like imgur first. The link has to end with .png, .jpg, .jpeg or .gif.' = 'Lade das Bild zuerst bei einem Dienst wie imgur hoch. Der Link muss auf .png, .jpg, .jpeg oder .gif enden.'
+    'Direct link to the image, for example https://i.ibb.co/abc123/example.png' = 'Direkter Link zum Bild, zum Beispiel https://i.ibb.co/abc123/beispiel.png'
+    'Upload the image to a site like imgbb.com first. The link has to end with .png, .jpg, .jpeg or .gif.' = 'Lade das Bild zuerst bei einem Dienst wie imgbb.com hoch. Der Link muss auf .png, .jpg, .jpeg oder .gif enden.'
     'Image links must be https and end with .png, .jpg, .jpeg or .gif' = 'Bild-Links mÃ¼ssen mit https beginnen und auf .png, .jpg, .jpeg oder .gif enden'
     'Align' = 'Ausrichtung'
     'Justify' = 'Blocksatz'
@@ -1974,7 +1974,7 @@ function Insert-Html($html) {
 # Mail clients only reliably show hosted images, so only direct links to a png, jpg or gif are accepted
 function Add-ImageFromUrl {
     Save-Selection
-    $hint = (T 'Direct link to the image, for example https://i.imgur.com/example.png') + "`n" + (T 'Upload the image to a site like imgur first. The link has to end with .png, .jpg, .jpeg or .gif.')
+    $hint = (T 'Direct link to the image, for example https://i.ibb.co/abc123/example.png') + "`n" + (T 'Upload the image to a site like imgbb.com first. The link has to end with .png, .jpg, .jpeg or .gif.')
     $url = Read-Text (T 'Insert image') $hint
     if (-not $url) { return }
     $url = $url.Trim()
