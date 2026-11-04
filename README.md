@@ -10,6 +10,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1-5391FE)
 ![Exchange Online](https://img.shields.io/badge/Exchange%20Online-only-2e9e5b)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 <img src="docs/mailboxes.png" width="900" alt="Mailbox overview">
 
@@ -88,4 +89,4 @@ Built with the help of **Claude** by Anthropic. The idea, the requirements and a
 Icons by [Font Awesome Free](https://fontawesome.com/license/free) (SIL OFL 1.1 / CC BY 4.0), packaged with [PS2EXE](https://github.com/MScholtes/PS2EXE).
 Not affiliated with Microsoft. Microsoft 365, Exchange Online and Outlook are trademarks of Microsoft Corporation. Provided as is, without warranty.
 
-No license has been chosen yet, so all rights are reserved.
+Released under the [MIT License](LICENSE).
