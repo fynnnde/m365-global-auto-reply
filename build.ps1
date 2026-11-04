@@ -46,8 +46,13 @@ $text = [IO.File]::ReadAllText($src).Replace('# EMBEDDED-ASSETS', $block)
 $temp = Join-Path ([IO.Path]::GetTempPath()) 'm365-global-auto-reply.ps1'
 [IO.File]::WriteAllText($temp, $text, (New-Object Text.UTF8Encoding $true))
 
-New-Item -ItemType Directory -Force $dist | Out-Null
-Invoke-ps2exe -inputFile $temp -outputFile (Join-Path $dist 'm365-global-auto-reply.exe') `
-    -noConsole -STA -x64 -DPIAware -iconFile (Join-Path $root 'assets\app.ico') `
+# PS2EXE breaks on paths with [ ] (they are read as wildcards), so build in the temp folder and copy afterwards
+$tempExe = Join-Path ([IO.Path]::GetTempPath()) 'm365-global-auto-reply.exe'
+$tempIco = Join-Path ([IO.Path]::GetTempPath()) 'm365-global-auto-reply.ico'
+[IO.File]::Copy((Join-Path $root 'assets\app.ico'), $tempIco, $true)
+Invoke-ps2exe -inputFile $temp -outputFile $tempExe `
+    -noConsole -STA -x64 -DPIAware -iconFile $tempIco `
     -title 'm365-global-auto-reply' -product 'm365-global-auto-reply' -version '0.1.0.0'
-[IO.File]::Delete($temp)
+[void][IO.Directory]::CreateDirectory($dist)
+[IO.File]::Copy($tempExe, (Join-Path $dist 'm365-global-auto-reply.exe'), $true)
+foreach ($f in $temp, $tempExe, $tempIco) { [IO.File]::Delete($f) }
